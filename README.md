@@ -10,7 +10,6 @@ The project compares four verifiers on identical evidence: a zero-shot NLI model
 - Without retrieved evidence, the LLM fell to **0.41** macro-F1 and gave a verdict on **59 of 63** claims that have no supporting evidence. With evidence, that dropped to 12.
 - Dense retrieval (bge-small + FAISS) reached **Recall@3 of 0.86** over 5,183 abstracts.
 
-![Demo](results/demo.png)
 
 ## Pipeline
 
@@ -53,10 +52,6 @@ The fine-tuned row shows the seed-42 run; across 3 seeds its macro-F1 was **0.70
 | LLM + evidence | 0.793 | 0.702 | 0.773 |
 | LLM closed-book | 0.656 | 0.479 | 0.101 |
 
-![Macro-F1 by system](results/macro_f1.png)
-
-![Confusion matrices](results/confusion_matrices.png)
-
 ### Key findings
 
 1. **Fine-tuning fixes domain shift.** The zero-shot model, trained on general-domain NLI, labelled most scientific paraphrases "neutral": it got only 20 of 60 SUPPORT claims right. After fine-tuning it got 43, and SUPPORT F1 rose from 0.50 to 0.79.
@@ -87,7 +82,6 @@ Each wrong answer is attributed to the first stage that failed:
 | Flipped label | 7 | 2 | 5 |
 | Verdict on NEI claim | 17 | 15 | 12 |
 
-![Error breakdown](results/error_breakdown.png)
 
 ## Method
 
@@ -165,6 +159,3 @@ To skip the LLM entirely, set `RUN_LLM = False` in section 6. The final section 
 }
 ```
 
-## Author
-
-**Lavanya Agnihotri** · B.Tech Computer Science (AI & ML), Manipal University Jaipur
